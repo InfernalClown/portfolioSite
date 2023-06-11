@@ -29,7 +29,7 @@
       </div>
       {% endfor %}
       <div class="card p-2" id="myform">
-        <form action="/auth/signup/" class="post">
+        <form action="/auth/signup/" method="post">
           {% csrf_token %}
           <div class="form-group">
             <h5>

@@ -31,6 +31,19 @@ def signup(request):
 
 
 def handleLogin(request):
+
+    if request.method == "POST":
+        get_email = request.POST.get('email')
+        get_password = request.POST.get('pass')
+        myuser = authenticate(username=get_email, password=get_password)
+
+        if myuser is not None:
+            login(request, myuser)
+            messages.success(request, "Login success")
+            return redirect('/')
+        else:
+            messages.error(request, 'Invalid credentials')
+
     return render(request, 'login.html')
 
 
